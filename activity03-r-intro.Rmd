@@ -31,32 +31,32 @@ Create three vectors that contain: 1) the lower case letters, 2) the lower case 
 ```{r}
 lower_case <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z")
 
-upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H" "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
 
-punctuation <- c(".", ",", "!", "?", "'", """, "(", ")", " ", "-", ";", ":")
+punctuation <- c(".", ",", "!", "?", "'", "\"", "(", ")", " ", "-", ";", ":")
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**: Added comma after H and \ in the punctuation.
 
 
 Make one long vector containing all the symbols.
 
 ```{r}
-my_symbols <- cbind(lower_case, upper_case, punctuation)
+my_symbols <- c(lower_case, upper_case, punctuation)
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**:Since they were different length of columns it will give us a warming that it will not turn out well
 
 
 Turn the `my_symbols` vector into a data frame, with the variable name "Symbol".
 
 ```{r}
-my_symbols <- dataframe(my_symbols)
-names(my_symbols) = Symbol
+my_symbols <- data.frame(my_symbols)
+Symbol <- my_symbols
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
@@ -67,23 +67,24 @@ Comment on what you noticed about the errors and how you used this information t
 Find the total number of symbols we have in our data frame.  
 
 ```{r}
-len <- length(my_symbols)
+len <- length(Symbol$my_symbols)
+len
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**: Needed to add a dollar sign to show where the data is coming from
 
 
 5. Create a new variable in your dataframe that assigns a number to each symbol.
 
 ```{r}
-my_symbols%Num <- 1:len
+my_symbols$Num <- 1:len
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**: The % sign does not connect the two values you would need a $.
 
 
 
@@ -112,7 +113,8 @@ Write your own code to complete the steps below.
 4. Square every number.
 
 ```{r}
-
+top_secret <- (exp(((top_secret + 14) * 18) - 257))^2
+top_secret
 ```
 
 **HQ UPDATE:** Headquarters has informed you that at this stage of decoding, there should be 496 numbers in the secret message that are below 17.
@@ -125,7 +127,23 @@ Write your own code to complete the steps below.
 10. Turn your matrix back into a vector.
 
 ```{r}
-
+#step 5
+top_secret <- matrix(newmsg,ncol=5)
+#Step 6
+evens <- seq(2,502,2)
+#evens
+#Step 7
+top_secret[,1] <- top_secret[,1] - evens
+#top_secret
+#Step 8
+top_secret[18:24,3] <- top_secret[18:24,3] - 100
+#top_secret
+#Step 9
+top_secret[,4:5] <- top_secret[,4:5]*2
+#top_secret
+#Step 10
+top_secret <- c(top_secret)
+top_secret
 ```
 
 **HQ UPDATE:** Headquarters has informed you that at this stage of decoding, all numbers in indices 500 and beyond are below 100.
